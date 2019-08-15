@@ -27,7 +27,7 @@ export default class NavBar extends React.Component{
                         Logout
                     </a>
                 </div>
-                <Route path='/MyReviews' component={MyReviews}/>
+                <Route path='/reviews' component={MyReviews}/>
           </div>
         )
     }

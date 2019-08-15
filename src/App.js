@@ -13,7 +13,7 @@ class App extends React.Component {
       <Switch>
         <Route path="/home" component={DataDisplayContainer} />
         <Route
-        path="/MyReviews"
+        path="/reviews"
         render={() => (
           <MyReviews/>
         )}
