@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import { Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css'
 
 export default class BodegaShow extends React.Component{

@@ -5,12 +5,15 @@ import Map from '../components/Map'
 import SearchBar from '../components/SearchBar'
 import BodegaShow from '../components/BodegaShow'
 import ReviewForm from '../components/ReviewForm'
+import NavBar from '../components/NavBar'
+import MyReviews from './MyReviews'
 
 export default class DataDisplayContainer extends React.Component{
     render() {
         return(
             <div className='data-display-container'>
                 <h2>Inside Data Display Container</h2>
+                <NavBar />
                 <SearchBar />
                 <Map />
                 <BodegaShow />

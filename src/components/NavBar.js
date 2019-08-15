@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
+import { Route, Link } from 'react-router-dom';
+import MyReviews from '../containers/MyReviews'
 
 export default class NavBar extends React.Component{
     render() {
@@ -9,8 +11,10 @@ export default class NavBar extends React.Component{
                 <a class="item active">
                     Home
                 </a>
-                <a class="item">
-                    My Reviews
+                <a class='item'>
+                    <Link to='/MyReviews'>
+                        My Reviews
+                    </Link>
                 </a>
                 <div class="right menu">
                     <div class="item">
@@ -23,6 +27,7 @@ export default class NavBar extends React.Component{
                         Logout
                     </a>
                 </div>
+                <Route path='/MyReviews' component={MyReviews}/>
           </div>
         )
     }
