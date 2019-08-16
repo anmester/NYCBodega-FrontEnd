@@ -31,6 +31,7 @@ class MapDoc extends React.Component {
         this.center = [-73.935242, 40.730610];
         this.onClickCircle = (e) => {
             console.log(e.target);
+            // to grab bodega from event, add bodega ID to the map.json data and match that id to bodega id 
         };
         this.onStyleLoad = (map) => {
             const { onStyleLoad } = this.props;
@@ -40,18 +41,20 @@ class MapDoc extends React.Component {
     render() {
         return (
             <Map
+                name='map'
                 style="mapbox://styles/mapbox/streets-v9"
                 center={this.center}
                 containerStyle={mapStyle}
                 onStyleLoad={this.onStyleLoad}
             >
                 <GeoJSONLayer
-                data={geojson}
-                circleLayout={circleLayout}
-                circlePaint={circlePaint}
-                circleOnClick={this.onClickCircle}
-                symbolLayout={symbolLayout}
-                symbolPaint={symbolPaint}
+                    name='location'
+                    data={geojson}
+                    circleLayout={circleLayout}
+                    circlePaint={circlePaint}
+                    circleOnClick={this.onClickCircle}
+                    symbolLayout={symbolLayout}
+                    symbolPaint={symbolPaint}
                 />
             </Map>
         )
