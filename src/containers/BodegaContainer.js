@@ -72,8 +72,6 @@ export default class BodegaContainer extends React.Component{
         //     }
         // }
 
-
-
         fetch(`${backendURL}/reviews`, {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: 'POST',
