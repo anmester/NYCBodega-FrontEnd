@@ -12,7 +12,7 @@ export default class NavBar extends React.Component{
                     Home
                 </a>
                 <a class='item'>
-                    <Link to='/MyReviews'>
+                    <Link to='/reviews'>
                         My Reviews
                     </Link>
                 </a>
