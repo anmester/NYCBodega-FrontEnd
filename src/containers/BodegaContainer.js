@@ -2,6 +2,8 @@ import React from 'react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import ReviewForm from '../components/ReviewForm'
+import Review from '../components/Review'
+
 
 export default class BodegaContainer extends React.Component{
     
@@ -26,7 +28,6 @@ export default class BodegaContainer extends React.Component{
     }
 
     onNewBodegaReviewChange = (e) =>{
-
         let f = e.target.name
         switch(f) {
             case "latenight":
@@ -39,8 +40,6 @@ export default class BodegaContainer extends React.Component{
             default:
                 this.setState({[e.target.name]: e.target.value})
           }
-        
-
     }
 
 
@@ -56,17 +55,11 @@ export default class BodegaContainer extends React.Component{
             newReviewCopy.bodega_id= 2;           // HARD CODED
             newReviewCopy.latenight= this.state.latenight.includes("true") ? true : false;
             newReviewCopy.coffeenumber= this.state.coffeenumber ? parseInt(this.state.coffeenumber) : 0;
-            // coffeetext= this.state.coffeetext;
             newReviewCopy.catnumber= this.state.catnumber ? parseInt(this.state.catnumber) : 0;
-            // cattext= this.state.cattext;
             newReviewCopy.sandwichnumber= this.state.sandwichnumber ?  parseInt(this.state.sandwichnumber) : 0;
-            // sandwichtext= this.state.sandwichtext;
             newReviewCopy.hoursnumber= this.state.hoursnumber ? parseInt(this.state.hoursnumber) : 0;
-            // hourstext= this.state.hourstext;
             newReviewCopy.beernumber= this.state.beernumber ? parseInt(this.state.beernumber) : 0;
-            // beertext= this.state.beertext;
             newReviewCopy.snacknumber= this.state.snacknumber ? parseInt(this.state.snacknumber) : 0;
-            // snacktext= this.state.snacktext
 
             console.log("newReviewCopy is --", newReviewCopy)
 
@@ -89,7 +82,30 @@ export default class BodegaContainer extends React.Component{
             })
         }).then( res => res.json() )
         .then( newReviewResp => {
-            console.log("newReviewResp", newReviewResp)
+            console.log("newReviewResp", newReviewResp)   // WORKS
+            return(
+                // reset state  &trigger re-render of 
+                this.setState({
+                    bodega_id: "",
+                    overallreview: "",
+                    latenight: "false",
+                    coffeenumber: "",
+                    coffeetext: "",
+                    catnumber: "",
+                    cattext: "",
+                    sandwichnumber: "",
+                    sandwichtext: "",
+                    hoursnumber: "",
+                    hourstext: "",
+                    beernumber: "",
+                    beertext: "",
+                    snacknumber: "",
+                    snacktext: ""
+                })
+
+                // What DO we want to do here?  Redirect to My Reviews and show posted review? 
+                // <Review beernumber={newReviewResp.beernumber}/>
+            )
         })
     }
 
