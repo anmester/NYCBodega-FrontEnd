@@ -4,8 +4,9 @@ import 'semantic-ui-css/semantic.min.css'
 import ReviewForm from '../components/ReviewForm'
 
 export default class BodegaContainer extends React.Component{
-    state={
+    
 
+    state={
         // For review in progress: 
         bodega_id: "",
         overallreview: "",
@@ -24,19 +25,15 @@ export default class BodegaContainer extends React.Component{
         snacktext: ""
     }
 
-
-
     onNewBodegaReviewChange = (e) =>{
-        console.log("e.target.name - ", e.target.name )
-        console.log("e.target.value - ", e.target.value )
+
         let f = e.target.name
         switch(f) {
             case "latenight":
-                console.log("In late night case")
-                if (e.target.state === "false" || e.target.state === false ) {
-                    this.setState({[e.target.name]: "true"})
+                if (e.target.value === "false" || e.target.value === false ) {
+                    this.setState({latenight: "false"})
                 } else {
-                    this.setState({[e.target.name]: "false"})
+                    this.setState({latenight: "true"})
                 }
                 break;
             default:
@@ -48,8 +45,52 @@ export default class BodegaContainer extends React.Component{
 
 
     onNewBodegaReviewSubmit = (e) =>{
+        e.preventDefault();
+        var backendURL="http://localhost:3000"
         console.log("e.target.name - ", e.target.name )
         console.log("e.target.value - ", e.target.value )
+
+        let newReviewCopy = {...this.state}
+
+            newReviewCopy.user_id= 2;            // HARD CODED
+            newReviewCopy.bodega_id= 2;           // HARD CODED
+            newReviewCopy.latenight= this.state.latenight.includes("true") ? true : false;
+            newReviewCopy.coffeenumber= this.state.coffeenumber ? parseInt(this.state.coffeenumber) : 0;
+            // coffeetext= this.state.coffeetext;
+            newReviewCopy.catnumber= this.state.catnumber ? parseInt(this.state.catnumber) : 0;
+            // cattext= this.state.cattext;
+            newReviewCopy.sandwichnumber= this.state.sandwichnumber ?  parseInt(this.state.sandwichnumber) : 0;
+            // sandwichtext= this.state.sandwichtext;
+            newReviewCopy.hoursnumber= this.state.hoursnumber ? parseInt(this.state.hoursnumber) : 0;
+            // hourstext= this.state.hourstext;
+            newReviewCopy.beernumber= this.state.beernumber ? parseInt(this.state.beernumber) : 0;
+            // beertext= this.state.beertext;
+            newReviewCopy.snacknumber= this.state.snacknumber ? parseInt(this.state.snacknumber) : 0;
+            // snacktext= this.state.snacktext
+
+            console.log("newReviewCopy is --", newReviewCopy)
+
+        // for (let key of newReviewCopy) {
+        //     if (key.includes("number")){
+        //         if ( !(["1", "2", "3","4","5",1,2,3,4,5 ].includes(key)) ){
+        //             console.log("THERE IS A NOT RATED NUMBER")
+        //             key = 0
+        //         }
+        //     }
+        // }
+
+
+
+        fetch(`${backendURL}/reviews`, {
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            method: 'POST',
+            body: JSON.stringify({
+                newReviewCopy
+            })
+        }).then( res => res.json() )
+        .then( newReviewResp => {
+            console.log("newReviewResp", newReviewResp)
+        })
     }
 
 

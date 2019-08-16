@@ -21,12 +21,12 @@ export default class ReviewForm extends React.Component{
     }
 
     render() {
-        console.log("Bodega Form Props: ", this.props)
+
         return(
             <React.Fragment>
-                <h3>Inside ReviewForm</h3>
 
-            <form  > 
+            <form onSubmit={((e)=>this.props.onNewBodegaReviewSubmit(e))} > 
+                <h3>Inside ReviewForm</h3>
                 <div class='ui container'>
                     <div class="ui form" equal width form>
                         <div class='fields' name='coffee-fields'>
@@ -271,13 +271,13 @@ export default class ReviewForm extends React.Component{
 
                         <div class='field' name='late-night'>
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" name="latenight" className="hidd" value={this.props.latenight} checked={this.props.latenight === true ? "true" : "false"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                {/* value={this.props.latenight}   When value is false, box always checked*/}
+                                <input type="checkbox" tabindex="0" name="latenight" className="hidd" value={this.props.latenight === "true" ? "false" : "true"} checked={this.props.latenight === "true" ? true : false} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
                                 <label>Open Late Night?</label>
                             </div>
                         </div>
                     </div>
                 </div>
+                <input type="submit" value="Submit" onSubmit={((e)=>this.props.onNewBodegaReviewSubmit)}></input>
             </form>
             </React.Fragment>
         )
