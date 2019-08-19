@@ -1,35 +1,45 @@
 import React from 'react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
+import { Form } from 'semantic-ui-react'
+
+const options = [
+    { key: 'a', text: 'All', value: 'all' },
+    { key: 'b', text: 'Coffee', value: 'coffee' },
+    { key: 'c', text: 'Cat', value: 'cat' },
+    { key: 'd', text: 'Sandwich', value: 'sandwich' },
+    { key: 'e', text: 'Hours', value: 'hours' },
+    { key: 'f', text: 'Beer', value: 'beer' },
+    { key: 'g', text: 'Snacks', value: 'snacks' },
+    { key: 'h', text: 'Late Night Hours', value: 'latenight' }
+  ]
 
 export default class SearchBar extends React.Component{
+
+
     render() {
         return(
             <div class="ui secondary  menu" name='search-bar'>
                 <a class="item active">
                     *miles slider*
                 </a>
+                
+                <form onChange={((e) => this.props.handleSearch(e) )}>
                 <a class="item">
                     <div class="ui icon input">
-                        <input type="text" placeholder="Search..."/>
+                        <input type="text" name="searchTerm" placeholder="Search..."/>
                         <i class="search link icon"></i>
                     </div>
                 </a>
-                <div class="ui compact menu" name='search-categories'>
-                    <div class="ui simple dropdown item">
-                        Categories
-                        <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <a class="item">Coffee</a>
-                            <a class="item">Cat</a>
-                            <a class="item">Sandwich</a>
-                            <a class="item">Hours</a>
-                            <a class="item">Beer</a>
-                            <a class="item">Snacks</a>
-                            <a class="item">Late Night</a>
-                        </div>
-                    </div>
-                </div>
+                </form>
+
+
+
+                <Form.Select onChange={this.props.handleSearch} fluid label='Search Category' options={options} placeholder='Categories' />
+
+                {/* <Form.Select onChange={((e, data) => this.props.handleSearch(e, data) )} fluid label='Search Category' options={options} placeholder='Categories' /> */}
+
+                
           </div>
         )
     }
