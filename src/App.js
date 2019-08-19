@@ -6,6 +6,10 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import DataDisplayContainer from './containers/DataDisplayContainer'
 import MyReviews from './containers/MyReviews'
 
+import NavBar from './components/NavBar'
+import Login from './components/Login'
+
+
 class App extends React.Component {
     // state = {
     //   user: {}

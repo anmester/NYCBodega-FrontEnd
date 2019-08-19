@@ -4,8 +4,12 @@ import 'semantic-ui-css/semantic.min.css'
 import MapDoc from '../components/MapDoc'
 import SearchBar from '../components/SearchBar'
 import BodegaShow from '../components/BodegaShow'
-import ReviewForm from '../components/ReviewForm'
+// import ReviewForm from '../components/ReviewForm'
 import NavBar from '../components/NavBar'
+
+import MyReviews from './MyReviews'
+import BodegaContainer from './BodegaContainer';
+
 
 export default class DataDisplayContainer extends React.Component{
 
@@ -18,7 +22,10 @@ export default class DataDisplayContainer extends React.Component{
                 <SearchBar />
                 <MapDoc />
                 <BodegaShow />
-                <ReviewForm />
+                
+                {/* Added temporarily for testing, BodegaContainer should only show after map click */}
+                <BodegaContainer />
+                {/* <ReviewForm />MOVED TO UNDER BODEGA CONTAINER*/   }
             </div>
         )
     }
