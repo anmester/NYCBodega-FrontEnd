@@ -9,35 +9,53 @@ import NavBar from '../components/NavBar'
 
 import MyReviews from './MyReviews'
 import BodegaContainer from './BodegaContainer';
+import { throwStatement } from '@babel/types';
 
 
 export default class DataDisplayContainer extends React.Component{
     state = {
         searchTerm: "",
         searchCategory: "", 
-        bodegasAndReviews: ""
+        bodegasAndReviews: "",
+        justBodegas: "",
+        justReviews: ""
     }
 
 
     componentDidMount = () => {
         fetch("http://localhost:3000/bodegasreviews")
         .then( res => res.json() )
-        .then( br =>  this.setState({bodegasAndReviews:  br}))
+        .then( br =>  {
+            let justBodegasArray = []
+            for (var property in br){
+                if (!property.includes("all_reviews")){
+                    justBodegasArray.push(br[property])
+                }
+            }
+
+            this.setState({
+            bodegasAndReviews:  br,
+            justBodegas: justBodegasArray,
+            justReviews: br.all_reviews
+            })
+        })
     }
 
 
 
     handleSearch = (e, data) => {
-        // console.log("Just e: ", e.dispatchConfig)
+        if (e.target.name === "searchTerm") {
+            console.log("In handle search, searchTerm is: ", e.target.value)
+            this.setState({searchTerm: e.target.value})
+        } else {
+            console.log("In handle search, searchCateohory is: ", data.value)
 
-        // console.log("Just e: ", e._dispatchInstances)
-        console.log("Just data: ", data.name)
-        this.setState({searchCategory: data.name})
+            this.setState({searchCategory: data.value})
+        }
 
-        // console.log("e.target.name",  e.target.name  )
-        // console.log("e.target.value", e.target.value )
+        console.log("this.state.justBodegas : ", this.state.justBodegas)
+        console.log("this.state.justReviews : ", this.state.justReviews)
 
-        // this.setState({searchTerm:, searchCategory: })
     }
 
     
@@ -48,12 +66,20 @@ export default class DataDisplayContainer extends React.Component{
                 <NavBar />
                 <SearchBar handleSearch={this.handleSearch}/>
                 <MapDoc />
-                {/* Tori Hid MapDoc bc got error Can't resolve 'react-mapbox-gl'   in mapDc.js */}
-                <BodegaShow />
+                {/* Tori Hid MapDoc bc got error Can't resolve 'react-mapbox-gl'   in mapDc.js needed to install it */}
                 
-                {/* Added temporarily for testing, BodegaContainer should only show after map click */}
-                <BodegaContainer />
+                {/* Added temporarily for testing, BodegaContainer should only show after map click OR  SEARCH */}
+                <BodegaContainer 
+                    searchTerm= {this.state.searchTerm}
+                    searchCategory= {this.state.searchCategory}
+                    justBodegas = {this.state.justBodegas}
+                    justReviews = {this.state.justReviews}
+
+                    // Add Map Search stuff? 
+                />
                 {/* <ReviewForm />MOVED TO UNDER BODEGA CONTAINER*/   }
+
+                <BodegaShow />
             </div>
         )
     }
