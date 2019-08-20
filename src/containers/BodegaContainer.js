@@ -108,7 +108,7 @@ export default class BodegaContainer extends React.Component{
     oneBodegaReviews = (bodegaId) => {
         // console.log(" bodegaId : ", bodegaId)  IS CORRECT
         // console.log("Just Reviews : ", this.props.justReviews)
-        let array3 = this.props.justReviews[3]
+        // let array3 = this.props.justReviews[3]
         // console.log("Just Reviews  B 3 : ", Object.keys(array3) )    //typeof = obj
 
         let returnVal;
@@ -289,9 +289,7 @@ export default class BodegaContainer extends React.Component{
         return(
             <React.Fragment>
             <h2>Inside Bodega Container</h2>
-            <BodegaShow
-                filterBodegasToShow  = {this.filterBodegasToShow()}
-            > BODEGA SHOW </BodegaShow> 
+            {this.props.searchInProgress ? <BodegaShow filterBodegasToShow  = {this.filterBodegasToShow()} /> : null}
             <ReviewForm 
                 onNewBodegaReviewChange={this.onNewBodegaReviewChange} 
                 onNewBodegaReviewSubmit={this.onNewBodegaReviewSubmit}

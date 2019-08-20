@@ -47,14 +47,14 @@ export default class BodegaShow extends React.Component{
         console.log("in bodega show,  filterBodegasToShow :", this.props.filterBodegasToShow)
         //map props.crazy bodegas array 
 
-        let bodegaInfo = this.props.bodega[0][0]
+        // let bodegaInfo = this.props.bodega[0][0]
         return(
             <div className='bodega-show'>
                 <h3>Inside Bodega Show</h3>
                 {delisArray2}
-                <h3>{bodegaInfo.name}</h3>
+                {/* <h3>{bodegaInfo.name}</h3>
                 <p>Neighborhood: {bodegaInfo.neighborhood}</p>
-                <p>Average Rating: {bodegaInfo.averagerating}</p>
+                <p>Average Rating: {bodegaInfo.averagerating}</p> */}
                 <button onClick={this.props.closeBodegaShow}>Close Bodega</button><br></br>
                 <button onClick={this.addReview}>Add Review</button>
             </div>

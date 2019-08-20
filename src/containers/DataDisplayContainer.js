@@ -5,6 +5,8 @@ import MapDoc from '../components/MapDoc'
 import SearchBar from '../components/SearchBar'
 import NavBar from '../components/NavBar'
 import BodegaContainer from './BodegaContainer';
+import { statement } from '@babel/template';
+import BodegaShow from '../components/BodegaShow'
 import { throwStatement } from '@babel/types';
 
 
@@ -14,7 +16,8 @@ export default class DataDisplayContainer extends React.Component{
         searchCategory: "", 
         bodegasAndReviews: "",
         justBodegas: "",
-        justReviews: ""
+        justReviews: "",
+        searchInProgress: false
     }
 
 
@@ -42,11 +45,11 @@ export default class DataDisplayContainer extends React.Component{
     handleSearch = (e, data) => {
         if (e.target.name === "searchTerm") {
             console.log("In handle search, searchTerm is: ", e.target.value)
-            this.setState({searchTerm: e.target.value})
+            this.setState({searchTerm: e.target.value, searchInProgress : true})
         } else {
             console.log("In handle search, searchCateohory is: ", data.value)
 
-            this.setState({searchCategory: data.value})
+            this.setState({searchCategory: data.value, searchInProgress:true})
         }
 
         console.log("this.state.justBodegas : ", this.state.justBodegas)
@@ -70,6 +73,7 @@ export default class DataDisplayContainer extends React.Component{
                     searchCategory= {this.state.searchCategory}
                     justBodegas = {this.state.justBodegas}
                     justReviews = {this.state.justReviews}
+                    searchInProgress = {this.state.searchInProgress}
                     user={this.props.user}
 
                     // Add Map Search stuff? 
