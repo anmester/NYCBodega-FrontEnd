@@ -2,12 +2,10 @@ import React from 'react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import ReviewForm from '../components/ReviewForm'
-import Review from '../components/Review'
 
 
 export default class BodegaContainer extends React.Component{
     
-
     state={
         // For review in progress: 
         bodega_id: "",
@@ -63,15 +61,6 @@ export default class BodegaContainer extends React.Component{
 
             console.log("newReviewCopy is --", newReviewCopy)
 
-        // for (let key of newReviewCopy) {
-        //     if (key.includes("number")){
-        //         if ( !(["1", "2", "3","4","5",1,2,3,4,5 ].includes(key)) ){
-        //             console.log("THERE IS A NOT RATED NUMBER")
-        //             key = 0
-        //         }
-        //     }
-        // }
-
         fetch(`${backendURL}/reviews`, {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: 'POST',
@@ -111,26 +100,26 @@ export default class BodegaContainer extends React.Component{
     render() {
         return(
             <React.Fragment>
-            <h2>Inside Bodega Container</h2>
-            <ReviewForm 
-                onNewBodegaReviewChange={this.onNewBodegaReviewChange} 
-                onNewBodegaReviewSubmit={this.onNewBodegaReviewSubmit}
-                bodega_id = {this.state.bodega_id}
-                overallreview = {this.state.overallreview}
-                latenight = {this.state.latenight}
-                coffeenumber = {this.state.coffeenumber}
-                coffeetext = {this.state.coffeetext}
-                catnumber = {this.state.catnumber}
-                cattext = {this.state.cattext}
-                sandwichnumber = {this.state.sandwichnumber}
-                sandwichtext = {this.state.sandwichtext}
-                hoursnumber = {this.state.hoursnumber}
-                hourstext = {this.state.hourstext}
-                beernumber = {this.state.beernumber}
-                beertext = {this.state.beertext}
-                snacknumber = {this.state.snacknumber}
-                snacktext = {this.state.snacktext}
-            /> 
+                <h2>Inside Bodega Container</h2>
+                <ReviewForm 
+                    onNewBodegaReviewChange={this.onNewBodegaReviewChange} 
+                    onNewBodegaReviewSubmit={this.onNewBodegaReviewSubmit}
+                    bodega_id = {this.state.bodega_id}
+                    overallreview = {this.state.overallreview}
+                    latenight = {this.state.latenight}
+                    coffeenumber = {this.state.coffeenumber}
+                    coffeetext = {this.state.coffeetext}
+                    catnumber = {this.state.catnumber}
+                    cattext = {this.state.cattext}
+                    sandwichnumber = {this.state.sandwichnumber}
+                    sandwichtext = {this.state.sandwichtext}
+                    hoursnumber = {this.state.hoursnumber}
+                    hourstext = {this.state.hourstext}
+                    beernumber = {this.state.beernumber}
+                    beertext = {this.state.beertext}
+                    snacknumber = {this.state.snacknumber}
+                    snacktext = {this.state.snacktext}
+                /> 
             </React.Fragment>
         )
     }

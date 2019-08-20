@@ -7,9 +7,9 @@ import MyReviews from '../containers/MyReviews'
 export default class NavBar extends React.Component{
     render() {
         return(
-            <div class="ui secondary  menu">
+            <div class="ui secondary menu">
                 <a class="item active">
-                    Home
+                        Home
                 </a>
                 <a class='item'>
                     <Link to='/reviews'>

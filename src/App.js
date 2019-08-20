@@ -6,9 +6,6 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import DataDisplayContainer from './containers/DataDisplayContainer'
 import MyReviews from './containers/MyReviews'
 
-import NavBar from './components/NavBar'
-import Login from './components/Login'
-
 
 class App extends React.Component {
     // state = {
@@ -64,10 +61,10 @@ class App extends React.Component {
         {/* <Route path='/login' render= {() => <SignUpForm submitHandler={this.signUpSubmit}/>} /> */}
         <Route path="/home" component={DataDisplayContainer} />
         <Route
-        path="/reviews"
-        render={() => (
-          <MyReviews/>
-        )}
+          path="/reviews"
+          render={() => (
+            <MyReviews/>
+          )}
         />
       </Switch>
       );
