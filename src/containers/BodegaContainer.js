@@ -49,7 +49,7 @@ export default class BodegaContainer extends React.Component{
 
         let newReviewCopy = {...this.state}
 
-            newReviewCopy.user_id= 2;            // HARD CODED
+            newReviewCopy.user_id= this.props.user.id;          
             newReviewCopy.bodega_id= 2;           // HARD CODED
             newReviewCopy.latenight= this.state.latenight.includes("true") ? true : false;
             newReviewCopy.coffeenumber= this.state.coffeenumber ? parseInt(this.state.coffeenumber) : 0;

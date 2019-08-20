@@ -1,4 +1,6 @@
 import React from 'react';
+import '../App.css';
+import 'semantic-ui-css/semantic.min.css'
 
 class Login extends React.Component{
     state = {

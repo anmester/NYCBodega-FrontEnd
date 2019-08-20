@@ -29,7 +29,6 @@ export default class MyReviews extends React.Component{
 
     editBodegaChange = (e) =>{
         let f = e.target.name
-        console.log('please let snacks work', f)
         switch(f) {
             case "latenight":
                 if (e.target.value === "false" || e.target.value === false ) {
@@ -102,10 +101,14 @@ export default class MyReviews extends React.Component{
     }
 
     componentDidMount() {
-        fetch('http://localhost:3000/userreviews/2')
+        let userId = this.props.user.id
+        fetch(`http://localhost:3000/userreviews/${userId}`) 
          .then(resp => resp.json())
          .then(apiData =>
-          this.setState({ reviews: apiData[0], bodegas: apiData.slice(1, apiData.length) })
+          this.setState( apiData.length > 1 ? 
+              { reviews: apiData[0], bodegas: apiData.slice(1, apiData.length) } :
+                {reviews: [], bodegas: []}
+              )
         );
     }
     
@@ -140,12 +143,12 @@ export default class MyReviews extends React.Component{
             />
         )
         return(
-            <React.Fragment>
+            <div style={{marginTop: 4.15 + 'em'}}>
                 <h2>My Reviews!</h2>
                 <Card.Group className='my-reviews' itemsPerRow='3'>
                     {reviewArray}
                 </Card.Group>
-            </React.Fragment>
+            </div>
         )
     }
 }

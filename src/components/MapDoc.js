@@ -30,20 +30,25 @@ class MapDoc extends React.Component {
         };
 
         this.state = {
+            bodegas: [],
             selectedBodega: false, 
-            selectedBodegaName: '',
-            lat: '',
-            long: '', 
+            selectedBodegaObj: []
         }
     }
 
+    componentDidMount() {
+        fetch('http://localhost:3000/bodegas')
+        .then(res => res.json())
+        .then(bodegaData => this.setState({bodegas: bodegaData}))
+    }
+
     onClickCircle = (e) => {
-        document.querySelector(".map").style.marginLeft = "15%"
-        console.log(e.features[0].geometry);   // this gives us the name of each bodega
-        let name = e.features[0].properties.name
-        let lat = e.features[0].geometry.coordinates[0]
-        let long = e.features[0].geometry.coordinates[1]
-        this.setState({selectedBodega: true, selectedBodegaName: name, lat: lat, long: long})
+        document.querySelector(".map").style.marginLeft = "15%" 
+        let name = e.features[0].properties.name      // this gives us the name of each bodega
+        this.setState({
+            selectedBodega: true, 
+            selectedBodegaObj: [this.state.bodegas.filter(bodega => bodega.name === name)]
+        })
         this.setBodegaCSS()
     };
 
@@ -71,30 +76,30 @@ class MapDoc extends React.Component {
 
     render() {
         return (
-                <>
-                    <div className='map-container'>
-                        <Map
-                            name='map'
-                            style="mapbox://styles/mapbox/streets-v9"
-                            center={this.center}
-                            containerStyle={mapStyle}
-                            onStyleLoad={this.onStyleLoad}
-                            className = "map"
-                        >
-                            <GeoJSONLayer
-                                name='location'
-                                data={geojson}
-                                circleLayout={circleLayout}
-                                circlePaint={circlePaint}
-                                circleOnClick={(e) => this.onClickCircle(e)}
-                            />
-                        </Map>
+            <>
+                <div className='map-container'>
+                    <Map
+                        name='map'
+                        style="mapbox://styles/mapbox/streets-v9"
+                        center={this.center}
+                        containerStyle={mapStyle}
+                        onStyleLoad={this.onStyleLoad}
+                        className = "map"
+                    >
+                        <GeoJSONLayer
+                            name='location'
+                            data={geojson}
+                            circleLayout={circleLayout}
+                            circlePaint={circlePaint}
+                            circleOnClick={(e) => this.onClickCircle(e)}
+                        />
+                     </Map>
 
-                        {this.state.selectedBodega ?
-                            <BodegaShow bodegaName={this.state.selectedBodegaName} closeBodegaShow={this.closeBodegaShow} />
-                        : null}
-                    </div>
-                </>
+                    {this.state.selectedBodega ? 
+                        <BodegaShow bodega={this.state.selectedBodegaObj} closeBodegaShow={this.closeBodegaShow} />
+                    : null}
+                </div>
+            </>
         )
     }
 }
