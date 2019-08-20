@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactMapboxGl, { GeoJSONLayer, Popup } from "react-mapbox-gl";
-import BodegaShow from './BodegaShow.js';
+import ClickBodegaShow from './ClickBodegaShow.js';
 
 const geojson = require('../map.json');
 
@@ -44,7 +44,7 @@ class MapDoc extends React.Component {
 
     onClickCircle = (e) => {
         document.querySelector(".map").style.marginLeft = "15%" 
-        let name = e.features[0].properties.name      // this gives us the name of each bodega
+        let name = e.features[0].properties.name 
         this.setState({
             selectedBodega: true, 
             selectedBodegaObj: [this.state.bodegas.filter(bodega => bodega.name === name)]
@@ -53,14 +53,14 @@ class MapDoc extends React.Component {
     };
 
     setBodegaCSS() {
-        const bodega = document.querySelector(".bodega-show");
+        const bodega = document.querySelector(".click-bodega-show");
         bodega.style.position = "absolute"
         bodega.style.width = "100%"
         bodega.style.marginTop = "-50.67em"
     }
 
     removeBodegaCSS() {
-        const bodega = document.querySelector(".bodega-show");
+        const bodega = document.querySelector(".click-bodega-show");
         bodega.style.position = ""
         bodega.style.width = "0%"
         bodega.style.marginTop = "0"
@@ -96,7 +96,7 @@ class MapDoc extends React.Component {
                      </Map>
 
                     {this.state.selectedBodega ? 
-                        <BodegaShow bodega={this.state.selectedBodegaObj} closeBodegaShow={this.closeBodegaShow} />
+                        <ClickBodegaShow bodega={this.state.selectedBodegaObj} closeBodegaShow={this.closeBodegaShow} />
                     : null}
                 </div>
             </>

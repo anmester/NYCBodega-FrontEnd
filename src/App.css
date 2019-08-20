@@ -3,10 +3,11 @@
   display: inline-block;
 }
 
-.bodega-show{
+.click-bodega-show{
   display: inline-block;
   max-width: 15%;
 }
+
 .App {
   text-align: center;
 }
