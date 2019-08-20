@@ -5,9 +5,9 @@ import 'semantic-ui-css/semantic.min.css'
 export default class SearchBar extends React.Component{
     render() {
         return(
-            <div class="ui secondary  menu" name='search-bar'>
-                <a class="item active">
-                    *miles slider*
+            <div class="ui secondary menu" name='search-bar' style={{marginTop: 4.15 + 'em'}}>
+                <a class="header item">
+                    Search for a Bodega!
                 </a>
                 <a class="item">
                     <div class="ui icon input">

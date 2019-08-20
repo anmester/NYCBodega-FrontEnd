@@ -5,15 +5,17 @@ import 'semantic-ui-css/semantic.min.css'
 export default class BodegaShow extends React.Component{
     
     addReview = e => {
-        console.log('add review clicked,', e.target)
+        console.log(this.props.bodega) // we have the target bodega here to add the review to and can now add a review accordingly
     }
     
     render() {
+        let bodegaInfo = this.props.bodega[0][0]
         return(
             <div className='bodega-show'>
-                <h3>Inside Bodega Show</h3>
-                <p>Name: {this.props.bodegaName}</p>
-                <button onClick={this.props.closeBodegaShow}>Close Bodega</button>
+                <h3>{bodegaInfo.name}</h3>
+                <p>Neighborhood: {bodegaInfo.neighborhood}</p>
+                <p>Average Rating: {bodegaInfo.averagerating}</p>
+                <button onClick={this.props.closeBodegaShow}>Close Bodega</button><br></br>
                 <button onClick={this.addReview}>Add Review</button>
             </div>
         )
