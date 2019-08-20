@@ -19,27 +19,11 @@ export default class SearchBar extends React.Component{
 
     render() {
         return(
-            <div class="ui secondary menu" name='search-bar' style={{marginTop: 4.15 + 'em'}}>
+            <div class="ui secondary menu" name='search-bar' style={{marginTop: 2.15 + 'em'}}>
                 <a class="header item">
-                    Search for a Bodega!
+                    Search for a Bodega by Category:
                 </a>
-                
-                <form onChange={((e) => this.props.handleSearch(e) )}>
-                <a class="item">
-                    <div class="ui icon input">
-                        <input type="text" name="searchTerm" placeholder="Search..."/>
-                        <i class="search link icon"></i>
-                    </div>
-                </a>
-                </form>
-
-
-
-                <Form.Select onChange={this.props.handleSearch} fluid label='Search Category' options={options} placeholder='Categories' />
-
-                {/* <Form.Select onChange={((e, data) => this.props.handleSearch(e, data) )} fluid label='Search Category' options={options} placeholder='Categories' /> */}
-
-                
+                <Form.Select onChange={this.props.handleSearch} fluid options={options} placeholder='Categories' />
           </div>
         )
     }

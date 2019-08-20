@@ -105,7 +105,7 @@ export default class MyReviews extends React.Component{
         fetch(`http://localhost:3000/userreviews/${userId}`) 
          .then(resp => resp.json())
          .then(apiData =>
-          this.setState( apiData.length > 1 ? 
+            this.setState( apiData.length > 1 ? 
               { reviews: apiData[0], bodegas: apiData.slice(1, apiData.length) } :
                 {reviews: [], bodegas: []}
               )

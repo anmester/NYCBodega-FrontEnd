@@ -64,10 +64,7 @@ export default class DataDisplayContainer extends React.Component{
                 <h2>Inside Data Display Container</h2>
                 <NavBar />
                 <SearchBar handleSearch={this.handleSearch}/>
-                <MapDoc />
-                {/* Tori Hid MapDoc bc got error Can't resolve 'react-mapbox-gl'   in mapDc.js needed to install it */}
-                
-                {/* Added temporarily for testing, BodegaContainer should only show after map click OR  SEARCH */}
+                <MapDoc user={this.props.user}/>
                 <BodegaContainer 
                     searchTerm= {this.state.searchTerm}
                     searchCategory= {this.state.searchCategory}
@@ -75,11 +72,7 @@ export default class DataDisplayContainer extends React.Component{
                     justReviews = {this.state.justReviews}
                     searchInProgress = {this.state.searchInProgress}
                     user={this.props.user}
-
-                    // Add Map Search stuff? 
                 />
-                {/* <ReviewForm />MOVED TO UNDER BODEGA CONTAINER*/   }
-
                 <BodegaShow />
             </div>
         )

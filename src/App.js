@@ -40,7 +40,7 @@ class App extends React.Component {
     render() {
       return (
         <>
-          <NavBar />
+          <NavBar submitHandler={this.signUpSubmit}/>
           <Switch>
             <Route 
               path='/login' 
