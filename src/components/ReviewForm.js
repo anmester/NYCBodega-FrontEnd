@@ -24,13 +24,13 @@ export default class ReviewForm extends React.Component{
         return(
             <React.Fragment>
 
-            <form onSubmit={((e)=>this.props.onNewBodegaReviewSubmit(e))} > 
-                <h3>Inside ReviewForm</h3>
+            <form onSubmit={((e)=>this.props.onNewBodegaReviewSubmit(e))} style={{marginLeft: 1 + 'em'}}> 
+                <h3>Add Review</h3>
                 <div class='ui container'>
                     <div class="ui form" equal width form>
                         <div class='fields' name='coffee-fields'>
-                            <div class="field" name='coffee-number'>
-                                <label>How would you rate the coffee?</label>
+                            <div class="inline fields" name='coffee-number'>
+                                <label>Rating coffee?</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="coffeenumber" value="1" tabIndex="1" className="hidd" checked={this.props.coffeenumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
@@ -69,8 +69,8 @@ export default class ReviewForm extends React.Component{
                         </div>
                         
                         <div class='fields' name='cat-fields'>
-                            <div class="field" name='cat-number'>
-                                <label>How would you rate the cat?</label>
+                            <div class="inline fields" name='cat-number'>
+                                <label>Rating cat?</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="catnumber" tabIndex="0" className="hidd" value="1" checked={this.props.catnumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
@@ -109,8 +109,8 @@ export default class ReviewForm extends React.Component{
                         </div>
 
                         <div class='fields' name='sandwich-fields'>
-                            <div class="field" name='sandwich-number'>
-                                <label>How would you rate the sandwich?</label>
+                            <div class="inline fields" name='sandwich-number'>
+                                <label>Rating sandwich?</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="sandwichnumber" tabindex="0" className="hidd" value="1" checked={this.props.sandwichnumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
@@ -149,8 +149,8 @@ export default class ReviewForm extends React.Component{
                         </div>
 
                         <div class='fields' name='hours-fields'>
-                            <div class="field" name='hours-number'>
-                                <label>How would you rate the hours?</label>
+                            <div class="inline fields" name='hours-number'>
+                                <label>Rating hours?</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="hoursnumber" tabindex="0" className="hidd" value="1" checked={this.props.hoursnumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
@@ -189,8 +189,8 @@ export default class ReviewForm extends React.Component{
                         </div>
 
                         <div class='fields' name='beer-fields'>
-                            <div class="field" name='beer-number'>
-                                <label>How would you rate the beer?</label>
+                            <div class="inline fields" name='beer-number'>
+                                <label>Rating beer?</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="beernumber" tabindex="0" className="hidd" value="1" checked={this.props.beernumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
@@ -229,8 +229,8 @@ export default class ReviewForm extends React.Component{
                         </div>
 
                         <div class='fields' name='snacks-fields'>
-                            <div class="field" name='snacks-number'>
-                                <label>How would you rate the snacks?</label>
+                            <div class="inline fields" name='snacks-number'>
+                                <label>Rating snacks?</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="snacknumber" tabindex="0" className="hidd" value="1" checked={this.props.snacknumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
