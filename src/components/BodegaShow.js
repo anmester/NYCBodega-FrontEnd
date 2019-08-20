@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css';
-import { Route, Switch } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css'
 import BodegaInfoCard from './BodegaInfoCard.js';
 
 
 export default class BodegaShow extends React.Component{
+
     state= {
 
     }
@@ -30,6 +30,10 @@ export default class BodegaShow extends React.Component{
         return delisArray
     }
     
+        addReview = e => {
+        console.log(this.props.bodega) // we have the target bodega here to add the review to and can now add a review accordingly
+    }
+    
 
     render() {
         let delisArray2;
@@ -43,19 +47,16 @@ export default class BodegaShow extends React.Component{
         console.log("in bodega show,  filterBodegasToShow :", this.props.filterBodegasToShow)
         //map props.crazy bodegas array 
 
-
+        let bodegaInfo = this.props.bodega[0][0]
         return(
             <div className='bodega-show'>
                 <h3>Inside Bodega Show</h3>
                 {delisArray2}
-                {/* <BodegaInfoCard 
-                    bodega={this.props.filterBodegasToShow[deliIndex][0]} 
-                    bodegaAvgRating={this.props.filterBodegasToShow[deliIndex][1]} 
-                    filteredReviews= {this.props.filterBodegasToShow[deliIndex][2]}
-                    searchTerm = {this.props.filterBodegasToShow[deliIndex][3]}  
-                /> */}
-                {/* Have Levels:   BodegaInfoCard   ReviewInfoCard   ReviewCategoryCard */}
-
+                <h3>{bodegaInfo.name}</h3>
+                <p>Neighborhood: {bodegaInfo.neighborhood}</p>
+                <p>Average Rating: {bodegaInfo.averagerating}</p>
+                <button onClick={this.props.closeBodegaShow}>Close Bodega</button><br></br>
+                <button onClick={this.addReview}>Add Review</button>
             </div>
         )
     }

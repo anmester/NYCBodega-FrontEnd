@@ -5,10 +5,8 @@ import ReviewForm from '../components/ReviewForm'
 import Review from '../components/Review'
 import BodegaShow from '../components/BodegaShow';
 
-
 export default class BodegaContainer extends React.Component{
     
-
     state={
         // NOT SURE IF WANTT TO PUT THIS IN STATE OR NOT: 
         filteredBodegasAndReviewsToDisplay: "Loading",
@@ -239,7 +237,7 @@ export default class BodegaContainer extends React.Component{
 
         let newReviewCopy = {...this.state}
 
-            newReviewCopy.user_id= 2;            // HARD CODED
+            newReviewCopy.user_id= this.props.user.id;          
             newReviewCopy.bodega_id= 2;           // HARD CODED
             newReviewCopy.latenight= this.state.latenight.includes("true") ? true : false;
             newReviewCopy.coffeenumber= this.state.coffeenumber ? parseInt(this.state.coffeenumber) : 0;
@@ -250,15 +248,6 @@ export default class BodegaContainer extends React.Component{
             newReviewCopy.snacknumber= this.state.snacknumber ? parseInt(this.state.snacknumber) : 0;
 
             console.log("newReviewCopy is --", newReviewCopy)
-
-        // for (let key of newReviewCopy) {
-        //     if (key.includes("number")){
-        //         if ( !(["1", "2", "3","4","5",1,2,3,4,5 ].includes(key)) ){
-        //             console.log("THERE IS A NOT RATED NUMBER")
-        //             key = 0
-        //         }
-        //     }
-        // }
 
         fetch(`${backendURL}/reviews`, {
             headers: { "Content-Type": "application/json; charset=utf-8" },

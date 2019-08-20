@@ -4,7 +4,6 @@ import 'semantic-ui-css/semantic.min.css'
 
 export default class ReviewForm extends React.Component{
     state = {
-
         latenight: "",
         coffeenumber: "",
         coffeetext: "",
