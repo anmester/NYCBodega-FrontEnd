@@ -16,6 +16,7 @@ class App extends React.Component {
     signUpSubmit = (e, user) => {
       e.preventDefault()
       console.log('Sign up user:', user)
+      localStorage.clear()
       let username = user.username
       let displayname = user.displayname
       let neighborhood = user.neighborhood
@@ -32,15 +33,17 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        this.setState({user: data})
+        localStorage.setItem('myData', JSON.stringify(data));
         this.props.history.push('/home')
       })
     }
   
     render() {
+      let targetUse = JSON.parse(localStorage.getItem('myData'))
+      console.log('this is target id', targetUse.id)
       return (
         <>
-          <NavBar />
+          <NavBar submitHandler={this.signUpSubmit}/>
           <Switch>
             <Route 
               path='/login' 
@@ -48,12 +51,12 @@ class App extends React.Component {
             />
             <Route 
               path="/home" 
-              render={() => <DataDisplayContainer user={this.state.user}/>} 
+              render={() => <DataDisplayContainer user={targetUse}/>} 
             />
             <Route
               path="/reviews"
               render={() => (
-                <MyReviews user={this.state.user}/>
+                <MyReviews user={targetUse}/>
               )}
             />
           </Switch>

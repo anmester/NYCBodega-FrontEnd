@@ -3,9 +3,14 @@
   display: inline-block;
 }
 
+.map-container {
+  background: lightsteelblue;
+}
+
 .click-bodega-show{
   display: inline-block;
-  max-width: 15%;
+  background: lightsteelblue;
+  max-width: 40%;
 }
 
 .App {

@@ -32,7 +32,22 @@ class MapDoc extends React.Component {
         this.state = {
             bodegas: [],
             selectedBodega: false, 
-            selectedBodegaObj: []
+            selectedBodegaObj: [],
+            bodega_id: "",
+            overallreview: "",
+            latenight: "false",
+            coffeenumber: "",
+            coffeetext: "",
+            catnumber: "",
+            cattext: "",
+            sandwichnumber: "",
+            sandwichtext: "",
+            hoursnumber: "",
+            hourstext: "",
+            beernumber: "",
+            beertext: "",
+            snacknumber: "",
+            snacktext: ""
         }
     }
 
@@ -43,7 +58,7 @@ class MapDoc extends React.Component {
     }
 
     onClickCircle = (e) => {
-        document.querySelector(".map").style.marginLeft = "15%" 
+        document.querySelector(".map").style.marginLeft = "40%" 
         let name = e.features[0].properties.name 
         this.setState({
             selectedBodega: true, 
@@ -74,7 +89,61 @@ class MapDoc extends React.Component {
         this.removeBodegaCSS()
     }
 
+    onNewBodegaReviewChange = (e) =>{
+        let f = e.target.name
+        console.log('event', e.target)
+        switch(f) {
+            case "latenight":
+                if (e.target.value === "false" || e.target.value === false ) {
+                    this.setState({latenight: "false"})
+                } else {
+                    this.setState({latenight: "true"})
+                }
+                break;
+            default:
+                this.setState({[e.target.name]: e.target.value})
+          }
+    }
+
+
+    onNewBodegaReviewSubmit = (e) =>{
+        e.preventDefault();
+        var backendURL="http://localhost:3000"
+        let reviewedBodega = this.state.bodegas.filter(bodega => bodega.id === this.state.selectedBodegaObj[0][0].id)
+        let reviewedBodegaId = reviewedBodega[0].id
+        console.log('user id', this.props.user)
+        let newReviewCopy = {...this.state}
+
+            newReviewCopy.user_id= this.props.user.id;          
+            newReviewCopy.bodega_id= reviewedBodegaId;          
+            newReviewCopy.latenight= this.state.latenight.includes("true") ? true : false;
+            newReviewCopy.coffeenumber= this.state.coffeenumber ? parseInt(this.state.coffeenumber) : 0;
+            newReviewCopy.catnumber= this.state.catnumber ? parseInt(this.state.catnumber) : 0;
+            newReviewCopy.sandwichnumber= this.state.sandwichnumber ?  parseInt(this.state.sandwichnumber) : 0;
+            newReviewCopy.hoursnumber= this.state.hoursnumber ? parseInt(this.state.hoursnumber) : 0;
+            newReviewCopy.beernumber= this.state.beernumber ? parseInt(this.state.beernumber) : 0;
+            newReviewCopy.snacknumber= this.state.snacknumber ? parseInt(this.state.snacknumber) : 0;
+
+            console.log('new review copy', newReviewCopy)
+        fetch(`${backendURL}/reviews`, {
+            headers: { "Content-Type": "application/json; charset=utf-8" },
+            method: 'POST',
+            body: JSON.stringify({
+                newReviewCopy
+            })
+        })
+        .then( res => res.json() )
+        .then( newReviewResp => {
+            this.setState({
+                selectedBodega: false
+            })
+            document.querySelector(".map").style.marginLeft = "0%" 
+        })
+    }
+
     render() {
+        console.log(this.state.coffeenumber);
+        
         return (
             <>
                 <div className='map-container'>
@@ -96,7 +165,29 @@ class MapDoc extends React.Component {
                      </Map>
 
                     {this.state.selectedBodega ? 
-                        <ClickBodegaShow bodega={this.state.selectedBodegaObj} closeBodegaShow={this.closeBodegaShow} />
+                        <ClickBodegaShow 
+                            bodega={this.state.selectedBodegaObj} 
+                            closeBodegaShow={this.closeBodegaShow} 
+                           
+                            onNewBodegaReviewChange={this.onNewBodegaReviewChange} 
+                            onNewBodegaReviewSubmit={this.onNewBodegaReviewSubmit}
+                           
+                            bodega_id = {this.state.bodega_id}
+                            overallreview = {this.state.overallreview}
+                            latenight = {this.state.latenight}
+                            coffeenumber = {this.state.coffeenumber}
+                            coffeetext = {this.state.coffeetext}
+                            catnumber = {this.state.catnumber}
+                            cattext = {this.state.cattext}
+                            sandwichnumber = {this.state.sandwichnumber}
+                            sandwichtext = {this.state.sandwichtext}
+                            hoursnumber = {this.state.hoursnumber}
+                            hourstext = {this.state.hourstext}
+                            beernumber = {this.state.beernumber}
+                            beertext = {this.state.beertext}
+                            snacknumber = {this.state.snacknumber}
+                            snacktext = {this.state.snacktext}
+                        />
                     : null}
                 </div>
             </>

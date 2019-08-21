@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { Route, Link } from 'react-router-dom';
 import MyReviews from '../containers/MyReviews'
 import DataDisplayContainer from '../containers/DataDisplayContainer';
+import SignUpForm from './SignUpForm'
 
 export default class NavBar extends React.Component{
     render() {
@@ -24,7 +25,9 @@ export default class NavBar extends React.Component{
                     </Link>
                 </a>
                 <a class="item">
-                    Logout
+                    <Link to='/login'>
+                        Logout
+                    </Link>
                 </a>
             </div>
             <Route path='/reviews' render={() => MyReviews}/>
