@@ -21,7 +21,6 @@ export default class SignUpForm extends React.Component{
                 <h2 style={{textAlign: 'center'}}>Sign Up for Bodegas!</h2><br></br>
                 <div class='ui grid center aligned' >
                     <Card.Group className='sign-up-form' >
-                        {/* <Card centered style={{width: 600 + 'px', height: 400 + 'px'}}>  */}
                         <Card class='two wide column'>
                             <Image src='https://pbs.twimg.com/media/ECdPiu_W4AIdv7t?format=jpg&name=large' style={{width: '100%'}}/>
                         </Card>

@@ -95,8 +95,8 @@ export default class MyReviews extends React.Component{
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            this.setState({editcomplete: 'true'})
-            this.editCompleteFlipBackToFalse()
+            let filteredReviews = this.state.reviews.filter(reviewData => reviewData.id !== review.id)
+            this.setState({reviews: filteredReviews, editcomplete: 'true'})
         })
     }
 
@@ -142,12 +142,22 @@ export default class MyReviews extends React.Component{
                 snacktext = {review.snacktext}
             />
         )
+
+        let textAlign = {
+            textAlign: 'center'
+        }
+
+        let marginTop = {
+            marginTop: 4.15 + 'em'
+        }
         return(
-            <div style={{marginTop: 4.15 + 'em'}}>
-                <h2>My Reviews!</h2>
-                <Card.Group className='my-reviews' itemsPerRow='3'>
-                    {reviewArray}
-                </Card.Group>
+            <div style={{...marginTop, ...textAlign}}>
+                <h2>My Reviews!</h2><br></br>
+                <div class='ui grid center aligned' >
+                    <Card.Group className='my-reviews'>
+                        {reviewArray}
+                    </Card.Group>
+                </div>
             </div>
         )
     }
