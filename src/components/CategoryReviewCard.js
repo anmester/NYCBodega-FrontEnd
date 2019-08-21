@@ -12,10 +12,10 @@ export default class CategoryReviewCard extends React.Component{
         //map props.crazy bodegas array 
 
         return(
-            <div className='bodega-show'>
+            <div >
                 {/* <h3> CategoryReviewCard </h3> */}
                 {/* Have Levels:   BodegaInfoCard   ReviewInfoCard   ReviewCategoryCard */}
-                <p className="cardText">Reported {this.props.reviewText} on Review Date: {this.props.reviewDate}</p>
+                {/* <p className="cardText">Reported {this.props.reviewText} on Review Date: {this.props.reviewDate}</p> */}
 
             </div>
         )

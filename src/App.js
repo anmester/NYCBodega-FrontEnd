@@ -40,7 +40,7 @@ class App extends React.Component {
   
     render() {
       let targetUse = JSON.parse(localStorage.getItem('myData'))
-      console.log('this is target id', targetUse.id)
+      //console.log('this is target id', targetUse.id)
       return (
         <>
           <NavBar submitHandler={this.signUpSubmit}/>

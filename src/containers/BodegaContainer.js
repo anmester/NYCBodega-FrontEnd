@@ -212,7 +212,7 @@ export default class BodegaContainer extends React.Component{
         return(
             <React.Fragment>
 
-            <h2>Inside Bodega Container</h2>
+            <h2>Your Search Results:</h2>
             {this.props.searchInProgress ? <BodegaShow filterBodegasToShow  = {this.filterBodegasToShow()} /> : null}
 
             </React.Fragment>

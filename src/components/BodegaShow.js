@@ -3,6 +3,7 @@ import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import BodegaInfoCard from './BodegaInfoCard.js';
 import  '../SearchReviews.css';
+import { Card } from 'semantic-ui-react';
 
 
 export default class BodegaShow extends React.Component{
@@ -15,10 +16,10 @@ export default class BodegaShow extends React.Component{
         let delisArray = this.props.filterBodegasToShow.map(deli  => {
             return(
                 <div className="bodegaCard">
-                    <p className="cardText">{deli[0]["name"]}</p>
-                    <p className="cardText">{deli[0]["neighborhood"]}</p>
-                    <p className="cardText">Average Rating : {deli[1]}</p>
-                    <BodegaInfoCard 
+                    <h2 className="cardText">{deli[0]["name"]} </h2> 
+                    <h3 className="cardText">{deli[0]["neighborhood"]}</h3>
+                    <span className="cardText">Average Rating : {deli[1] ? deli[1].toFixed(2) : "No Reviews" }</span><br/> 
+                    <BodegaInfoCard                     //only want to return ONE per del
                         bodega={deli[0]} 
                         bodegaAvgRating={deli[1]} 
                         filteredReviews= {deli[2]}
@@ -31,7 +32,7 @@ export default class BodegaShow extends React.Component{
         return delisArray
     }
     
-        addReview = e => {
+    addReview = e => {
         console.log(this.props.bodega) // we have the target bodega here to add the review to and can now add a review accordingly
     }
     
@@ -41,7 +42,7 @@ export default class BodegaShow extends React.Component{
 
         if (this.props.filterBodegasToShow){
             delisArray2 = this.renderBodegaInfoCards()
-            console.log("delisArray2 is REAL", delisArray2 )
+            console.log("delisArray2 is REAL", delisArray2 )   // is array of 5 bodegas 
         }
         
 
@@ -50,15 +51,9 @@ export default class BodegaShow extends React.Component{
 
         // let bodegaInfo = this.props.bodega[0][0]
         return(
-            <div className='bodega-show'>
-                {/* <h3>Inside Bodega Show</h3> */}
+            <Card.Group className='bodega-show' itemsPerRow={4}>
                 {delisArray2}
-                {/* <h3>{bodegaInfo.name}</h3>
-                <p>Neighborhood: {bodegaInfo.neighborhood}</p>
-                <p>Average Rating: {bodegaInfo.averagerating}</p> */}
-                <button onClick={this.props.closeBodegaShow}>Close Bodega</button><br></br>
-                <button onClick={this.addReview}>Add Review</button>
-            </div>
+            </Card.Group>
         )
     }
 }
