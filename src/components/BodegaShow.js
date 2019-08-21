@@ -15,10 +15,10 @@ export default class BodegaShow extends React.Component{
         let delisArray = this.props.filterBodegasToShow.map(deli  => {
             return(
                 <div className="bodegaCard">
-                    <p className="cardText">{deli[0]["name"]}</p>
-                    <p className="cardText">{deli[0]["neighborhood"]}</p>
-                    <p className="cardText">Average Rating : {deli[1]}</p>
-                    <BodegaInfoCard 
+                    <h2 className="cardText">{deli[0]["name"]} </h2> 
+                    <h3 className="cardText">{deli[0]["neighborhood"]}</h3>
+                    <span className="cardText">Average Rating : {deli[1] ? deli[1].toFixed(2) : "No Reviews" }</span><br/> 
+                    <BodegaInfoCard                     //only want to return ONE per del
                         bodega={deli[0]} 
                         bodegaAvgRating={deli[1]} 
                         filteredReviews= {deli[2]}
@@ -31,7 +31,7 @@ export default class BodegaShow extends React.Component{
         return delisArray
     }
     
-        addReview = e => {
+    addReview = e => {
         console.log(this.props.bodega) // we have the target bodega here to add the review to and can now add a review accordingly
     }
     
@@ -41,7 +41,7 @@ export default class BodegaShow extends React.Component{
 
         if (this.props.filterBodegasToShow){
             delisArray2 = this.renderBodegaInfoCards()
-            console.log("delisArray2 is REAL", delisArray2 )
+            console.log("delisArray2 is REAL", delisArray2 )   // is array of 5 bodegas 
         }
         
 
