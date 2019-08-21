@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
+import { Card, Button, Icon, Form } from 'semantic-ui-react'
 
 export default class ReviewForm extends React.Component{
     state = {
@@ -20,264 +21,271 @@ export default class ReviewForm extends React.Component{
     }
 
     render() {
+        let marginLeft = {
+            marginLeft: 1 + 'em',
+        }
+
+        let marginTop = {
+            marginTop: 1 + 'em',
+        }
+
+        let marginRight = {
+            marginRight: 1 + 'em',
+        }
+
+        let textAlign = {
+            textAlign: 'center'
+        }
 
         return(
             <React.Fragment>
+                <h2 style={{...textAlign, ...marginTop}}>Add a Review for {this.props.bodegaInfo.name}</h2>
+                <Form onSubmit={((e)=>this.props.onNewBodegaReviewSubmit(e))} style={{...marginTop, ...marginLeft, ...marginRight}}>
+                    <Form.Group inline>
+                        <label>Coffee Rating</label>
+                        <Form.Radio
+                            label='1'
+                            name="coffeenumber" 
+                            value="1" 
+                            checked={this.props.coffeenumber === "1"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='2'
+                            name="coffeenumber" 
+                            value="2" 
+                            checked={this.props.coffeenumber === "2"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='3'
+                            name="coffeenumber" 
+                            value="3" 
+                            checked={this.props.coffeenumber === "3"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='4'
+                            name="coffeenumber" 
+                            value="4" 
+                            checked={this.props.coffeenumber === "4"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='5'
+                            name="coffeenumber" 
+                            value="5" 
+                            checked={this.props.coffeenumber === "5"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Input label='Coffee Notes' placeholder='Coffee Notes' name='coffeetext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                    </Form.Group>
 
-            <form onSubmit={((e)=>this.props.onNewBodegaReviewSubmit(e))} style={{marginLeft: 1 + 'em'}}> 
-                <h3>Add Review</h3>
-                <div class='ui container'>
-                    <div class="ui form" equal width form>
-                        <div class='fields' name='coffee-fields'>
-                            <div class="inline fields" name='coffee-number'>
-                                <label>Rating coffee?</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="coffeenumber" value="1" tabIndex="1" className="hidd" checked={this.props.coffeenumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
-                                        <label>1</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                            <input type="radio" name="coffeenumber" value="2" tabIndex="2" className="hidd" checked={this.props.coffeenumber === "2"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
-                                            <label>2</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="coffeenumber" value="3" tabIndex="3" className="hidd" checked={this.props.coffeenumber === "3"}  onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
-                                        <label>3</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="coffeenumber" value="4" tabIndex="4" className="hidd" checked={this.props.coffeenumber === "4"}  onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
-                                        <label>4</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="coffeenumber" value="5" tabIndex="5" className="hidd" checked={this.props.coffeenumber === "5"}  onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
-                                        <label>5</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div input type="text"  class="field" name='coffeetext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} >
-                                <label>coffee review</label>
-                                <textarea name='coffeetext' rows="2"></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class='fields' name='cat-fields'>
-                            <div class="inline fields" name='cat-number'>
-                                <label>Rating cat?</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="catnumber" tabIndex="0" className="hidd" value="1" checked={this.props.catnumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>1</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                            <input type="radio" name="catnumber" tabindex="0" className="hidd" value="2" checked={this.props.catnumber === "2"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                            <label>2</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="catnumber" tabindex="0" className="hidd" value="3" checked={this.props.catnumber === "3"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>3</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="catnumber" tabindex="0" className="hidd" value="4" checked={this.props.catnumber === "4"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>4</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="catnumber" tabindex="0" className="hidd" value="5" checked={this.props.catnumber === "5"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>5</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field" name='cattext'>
-                                <label>cat review</label>
-                                <textarea rows="2" name='cattext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} ></textarea>
-                            </div>
-                        </div>
+                    <Form.Group inline>
+                        <label>Cat Rating</label>
+                        <Form.Radio
+                            label='1'
+                            name="catnumber" 
+                            value="1" 
+                            checked={this.props.catnumber === "1"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='2'
+                            name="catnumber" 
+                            value="2" 
+                            checked={this.props.catnumber === "2"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='3'
+                            name="catnumber" 
+                            value="3" 
+                            checked={this.props.catnumber === "3"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='4'
+                            name="catnumber" 
+                            value="4" 
+                            checked={this.props.catnumber === "4"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='5'
+                            name="catnumber" 
+                            value="5" 
+                            checked={this.props.catnumber === "5"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Input label='Cat Notes' placeholder='Cat Notes' name='cattext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                    </Form.Group>
 
-                        <div class='fields' name='sandwich-fields'>
-                            <div class="inline fields" name='sandwich-number'>
-                                <label>Rating sandwich?</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="sandwichnumber" tabindex="0" className="hidd" value="1" checked={this.props.sandwichnumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )} />
-                                        <label>1</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                            <input type="radio" name="sandwichnumber" tabindex="0" className="hidd" value="2" checked={this.props.sandwichnumber === "2"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                            <label>2</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="sandwichnumber" tabindex="0" className="hidd" value="3" checked={this.props.sandwichnumber === "3"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>3</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="sandwichnumber" tabindex="0" className="hidd" value="4" checked={this.props.sandwichnumber === "4"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>4</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="sandwichnumber" tabindex="0" className="hidd" value="5" checked={this.props.sandwichnumber === "5"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>5</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field" name='sandwichtext'>
-                                <label>sandwich review</label>
-                                <textarea rows="2"></textarea>
-                            </div>
-                        </div>
+                    <Form.Group inline>
+                        <label>Sandwich Rating</label>
+                        <Form.Radio
+                            label='1'
+                            name="sandwichnumber" 
+                            value="1" 
+                            checked={this.props.sandwichnumber === "1"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='2'
+                            name="sandwichnumber" 
+                            value="2" 
+                            checked={this.props.sandwichnumber === "2"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='3'
+                            name="sandwichnumber" 
+                            value="3" 
+                            checked={this.props.sandwichnumber === "3"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='4'
+                            name="sandwichnumber" 
+                            value="4" 
+                            checked={this.props.sandwichnumber === "4"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='5'
+                            name="sandwichnumber" 
+                            value="5" 
+                            checked={this.props.sandwichnumber === "5"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Input label='Sandwich Notes' placeholder='Sandwich Notes' name='sandwichtext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                    </Form.Group>
 
-                        <div class='fields' name='hours-fields'>
-                            <div class="inline fields" name='hours-number'>
-                                <label>Rating hours?</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="hoursnumber" tabindex="0" className="hidd" value="1" checked={this.props.hoursnumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>1</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                            <input type="radio" name="hoursnumber" tabindex="0" className="hidd" value="2" checked={this.props.hoursnumber === "2"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                            <label>2</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="hoursnumber" tabindex="0" className="hidd" value="3" checked={this.props.hoursnumber === "3"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>3</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="hoursnumber" tabindex="0" className="hidd" value="4" checked={this.props.hoursnumber === "4"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>4</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="hoursnumber" tabindex="0" className="hidd" value="5" checked={this.props.hoursnumber === "5"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>5</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field" name='hourstext'>
-                                <label>hours review</label>
-                                <textarea rows="2"></textarea>
-                            </div>
-                        </div>
+                    <Form.Group inline>
+                        <label>Hours Rating</label>
+                        <Form.Radio
+                            label='1'
+                            name="hoursnumber" 
+                            value="1" 
+                            checked={this.props.hoursnumber === "1"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='2'
+                            name="hoursnumber" 
+                            value="2" 
+                            checked={this.props.hoursnumber === "2"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='3'
+                            name="hoursnumber" 
+                            value="3" 
+                            checked={this.props.hoursnumber === "3"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='4'
+                            name="hoursnumber" 
+                            value="4" 
+                            checked={this.props.hoursnumber === "4"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='5'
+                            name="hoursnumber" 
+                            value="5" 
+                            checked={this.props.hoursnumber === "5"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Input label='Hours Notes' placeholder='Hours Notes' name='hourstext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                    </Form.Group>
 
-                        <div class='fields' name='beer-fields'>
-                            <div class="inline fields" name='beer-number'>
-                                <label>Rating beer?</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="beernumber" tabindex="0" className="hidd" value="1" checked={this.props.beernumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>1</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                            <input type="radio" name="beernumber" tabindex="0" className="hidd" value="2" checked={this.props.beernumber === "2"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                            <label>2</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="beernumber" tabindex="0" className="hidd" value="3" checked={this.props.beernumber === "3"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>3</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="beernumber" tabindex="0" className="hidd" value="4" checked={this.props.beernumber === "4"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>4</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="beernumber" tabindex="0" className="hidd" value="5" checked={this.props.beernumber === "5"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>5</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field" name='beertext'>
-                                <label>beer review</label>
-                                <textarea rows="2"></textarea>
-                            </div>
-                        </div>
+                    <Form.Group inline>
+                        <label>Beer Rating</label>
+                        <Form.Radio
+                            label='1'
+                            name="beernumber" 
+                            value="1" 
+                            checked={this.props.beernumber === "1"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='2'
+                            name="beernumber" 
+                            value="2" 
+                            checked={this.props.beernumber === "2"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='3'
+                            name="beernumber" 
+                            value="3" 
+                            checked={this.props.beernumber === "3"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='4'
+                            name="beernumber" 
+                            value="4" 
+                            checked={this.props.beernumber === "4"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='5'
+                            name="beernumber" 
+                            value="5" 
+                            checked={this.props.beernumber === "5"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Input label='Beer Notes' placeholder='Beer Notes' name='beertext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                    </Form.Group>
 
-                        <div class='fields' name='snacks-fields'>
-                            <div class="inline fields" name='snacks-number'>
-                                <label>Rating snacks?</label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="snacknumber" tabindex="0" className="hidd" value="1" checked={this.props.snacknumber === "1"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>1</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                            <input type="radio" name="snacknumber" tabindex="0" className="hidd" value="2" checked={this.props.snacknumber === "2"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                            <label>2</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="snacknumber" tabindex="0" className="hidd" value="3" checked={this.props.snacknumber === "3"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>3</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="snacknumber" tabindex="0" className="hidd" value="4" checked={this.props.snacknumber === "4"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>4</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="snacknumber" tabindex="0" className="hidd" value="5" checked={this.props.snacknumber === "5"} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                        <label>5</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="field" name='snacktext'>
-                                <label>snacks review</label>
-                                <textarea rows="2"></textarea>
-                            </div>
-                        </div>
-
-                        <div class='field' name='late-night'>
-                            <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" name="latenight" className="hidd" value={this.props.latenight === "true" ? "false" : "true"} checked={this.props.latenight === "true" ? true : false} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
-                                <label>Open Late Night?</label>
-                            </div>
-                        </div>
+                    <Form.Group inline>
+                        <label>Snacks Rating</label>
+                        <Form.Radio
+                            label='1'
+                            name="snacknumber" 
+                            value="1" 
+                            checked={this.props.snacknumber === "1"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='2'
+                            name="snacknumber" 
+                            value="2" 
+                            checked={this.props.snacknumber === "2"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='3'
+                            name="snacknumber" 
+                            value="3" 
+                            checked={this.props.snacknumber === "3"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='4'
+                            name="snacknumber" 
+                            value="4" 
+                            checked={this.props.snacknumber === "4"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Radio
+                            label='5'
+                            name="snacknumber" 
+                            value="5" 
+                            checked={this.props.snacknumber === "5"} 
+                            onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}
+                        />
+                        <Form.Input label='Snack Notes' placeholder='Snack Notes' name='snacktext' onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                    </Form.Group>
+                    <div class="ui checkbox">
+                        <input type="checkbox" tabindex="0" name="latenight" className="hidd" value={this.props.latenight === "true" ? "false" : "true"} checked={this.props.latenight === "true" ? true : false} onChange={((e)=>this.props.onNewBodegaReviewChange(e) )}/>
+                        <label>Open Late Night?</label><br></br>
                     </div>
-                </div>
-                <input type="submit" value="Submit" onSubmit={((e)=>this.props.onNewBodegaReviewSubmit)}></input>
-            </form>
+                    <Form.Button type='submit' value='submit'>Submit</Form.Button>
+                </Form>
             </React.Fragment>
         )
     }
