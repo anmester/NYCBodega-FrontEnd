@@ -13,8 +13,9 @@ export default class CategoryReviewCard extends React.Component{
 
         return(
             <div className='bodega-show'>
-                <h3> CategoryReviewCard </h3>
+                {/* <h3> CategoryReviewCard </h3> */}
                 {/* Have Levels:   BodegaInfoCard   ReviewInfoCard   ReviewCategoryCard */}
+                <p className="cardText">Reported {this.props.reviewText} on Review Date: {this.props.reviewDate}</p>
 
             </div>
         )

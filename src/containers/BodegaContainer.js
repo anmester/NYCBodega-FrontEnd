@@ -5,11 +5,14 @@ import ReviewForm from '../components/ReviewForm'
 import Review from '../components/Review'
 import BodegaShow from '../components/BodegaShow';
 
+
 export default class BodegaContainer extends React.Component{
     
+
     state={
         // NOT SURE IF WANTT TO PUT THIS IN STATE OR NOT: 
         filteredBodegasAndReviewsToDisplay: "Loading",
+        searchInProgress: false,
 
         // For review in progress: 
         bodega_id: "",
@@ -108,7 +111,7 @@ export default class BodegaContainer extends React.Component{
     oneBodegaReviews = (bodegaId) => {
         // console.log(" bodegaId : ", bodegaId)  IS CORRECT
         // console.log("Just Reviews : ", this.props.justReviews)
-        // let array3 = this.props.justReviews[3]
+        let array3 = this.props.justReviews[3]
         // console.log("Just Reviews  B 3 : ", Object.keys(array3) )    //typeof = obj
 
         let returnVal;
@@ -190,17 +193,8 @@ export default class BodegaContainer extends React.Component{
             allBodegasAndReviewsArrIndexCounter += 1;
         }
         
-        
-        // this.setState({[e.target.name]: e.target.value})
-        
-        
-        // if(this.state.searchTerm) {
-            
-            // }
-            // this.setState({filteredBodegasAndReviewsToDisplay: filteredReturnArr})
         console.log("filtered Return arR: ", filteredReturnArr )
         return filteredReturnArr;
-        // How display review within BodegaShow? 
     }
 
 
@@ -212,11 +206,15 @@ export default class BodegaContainer extends React.Component{
 
 
 
+
+
     render() {
         return(
             <React.Fragment>
+
             <h2>Inside Bodega Container</h2>
             {this.props.searchInProgress ? <BodegaShow filterBodegasToShow  = {this.filterBodegasToShow()} /> : null}
+
             </React.Fragment>
         )
     }

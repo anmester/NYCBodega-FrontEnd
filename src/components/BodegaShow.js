@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import BodegaInfoCard from './BodegaInfoCard.js';
+import  '../SearchReviews.css';
 
 
 export default class BodegaShow extends React.Component{
@@ -13,20 +14,20 @@ export default class BodegaShow extends React.Component{
     renderBodegaInfoCards = () => {
         let delisArray = this.props.filterBodegasToShow.map(deli  => {
             return(
-                <div>
+                <div className="bodegaCard">
+                    <p className="cardText">{deli[0]["name"]}</p>
+                    <p className="cardText">{deli[0]["neighborhood"]}</p>
+                    <p className="cardText">Average Rating : {deli[1]}</p>
                     <BodegaInfoCard 
                         bodega={deli[0]} 
                         bodegaAvgRating={deli[1]} 
                         filteredReviews= {deli[2]}
                         searchTerm = {deli[3]}  
                     />
-                    <h3>{deli[0]["name"]}</h3>
-                    <h3>{deli[0]["neighborhood"]}</h3>
-                    <h3>Average Rating : {deli[1]}</h3>
                 </div>
             )   
         })
-
+        console.log("delis Array in BodegaShow: ", delisArray)
         return delisArray
     }
     
@@ -50,7 +51,7 @@ export default class BodegaShow extends React.Component{
         // let bodegaInfo = this.props.bodega[0][0]
         return(
             <div className='bodega-show'>
-                <h3>Inside Bodega Show</h3>
+                {/* <h3>Inside Bodega Show</h3> */}
                 {delisArray2}
                 {/* <h3>{bodegaInfo.name}</h3>
                 <p>Neighborhood: {bodegaInfo.neighborhood}</p>
