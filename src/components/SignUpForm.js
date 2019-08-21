@@ -17,25 +17,33 @@ export default class SignUpForm extends React.Component{
     
     render() {
         return(
-            <div className='sign-up-form' style={{marginTop: 4.15 + 'em'}}>
-                <h2 style={{textAlign: 'center'}}>Sign Up for Bodegas</h2>
-                <Card centered style={{width: 600 + 'px', height: 400 + 'px'}}> 
-                    <Image src='https://pbs.twimg.com/media/EAMxnumVUA0j_QX?format=jpg&name=medium' />
-                    <Card.Content>
-                        <Form onSubmit={(e) => this.props.submitHandler(e, this.state)}>
-                            <Form.Field onChange={this.changeHandler}>
-                                <Form.Input label='Enter Name' placeholder='Enter Name' value={this.state.username} name='username' width={10}/>
-                            </Form.Field>
-                            <Form.Field onChange={this.changeHandler}>
-                                <Form.Input label='Enter Display Name' placeholder='Enter Display Name' value={this.state.displayname} name='displayname' width={10}/>
-                            </Form.Field>
-                            <Form.Field onChange={this.changeHandler}>
-                                <Form.Input label='Enter Neighborhood' placeholder='Enter Neighborhood' value={this.state.neighborhood} name='neighborhood' width={10}/>
-                            </Form.Field>
-                            <Button type='submit' value='submit'>Sign Up</Button>
-                        </Form>
-                    </Card.Content>
-                </Card>
+            <div style={{marginTop: 5.65 + 'em'}}>
+                <h2 style={{textAlign: 'center'}}>Sign Up for Bodegas!</h2><br></br>
+                <div class='ui grid center aligned' >
+                    <Card.Group className='sign-up-form' >
+                        {/* <Card centered style={{width: 600 + 'px', height: 400 + 'px'}}>  */}
+                        <Card class='two wide column'>
+                            <Image src='https://pbs.twimg.com/media/ECdPiu_W4AIdv7t?format=jpg&name=large' style={{width: '100%'}}/>
+                        </Card>
+                        
+                        <Card class='two wide column'> 
+                            <Card.Content>
+                                <Form onSubmit={(e) => this.props.submitHandler(e, this.state)}>
+                                    <Form.Field onChange={this.changeHandler}>
+                                        <Form.Input label='Enter Name' placeholder='Enter Name' value={this.state.username} name='username' width={10}/>
+                                    </Form.Field>
+                                    <Form.Field onChange={this.changeHandler}>
+                                        <Form.Input label='Enter Display Name' placeholder='Enter Display Name' value={this.state.displayname} name='displayname' width={10}/>
+                                    </Form.Field>
+                                    <Form.Field onChange={this.changeHandler}>
+                                        <Form.Input label='Enter Neighborhood' placeholder='Enter Neighborhood' value={this.state.neighborhood} name='neighborhood' width={10}/>
+                                    </Form.Field>
+                                    <Button type='submit' value='submit'>Sign Up</Button>
+                                </Form>
+                            </Card.Content>
+                        </Card>
+                    </Card.Group>
+                </div>
             </div>
         )
     }
