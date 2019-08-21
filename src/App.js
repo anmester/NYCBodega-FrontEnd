@@ -16,6 +16,7 @@ class App extends React.Component {
     signUpSubmit = (e, user) => {
       e.preventDefault()
       console.log('Sign up user:', user)
+      localStorage.clear()
       let username = user.username
       let displayname = user.displayname
       let neighborhood = user.neighborhood
