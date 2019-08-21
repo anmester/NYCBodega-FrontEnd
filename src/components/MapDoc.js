@@ -91,6 +91,7 @@ class MapDoc extends React.Component {
 
     onNewBodegaReviewChange = (e) =>{
         let f = e.target.name
+        console.log('event', e.target)
         switch(f) {
             case "latenight":
                 if (e.target.value === "false" || e.target.value === false ) {
@@ -141,6 +142,8 @@ class MapDoc extends React.Component {
     }
 
     render() {
+        console.log(this.state.coffeenumber);
+        
         return (
             <>
                 <div className='map-container'>
@@ -165,8 +168,10 @@ class MapDoc extends React.Component {
                         <ClickBodegaShow 
                             bodega={this.state.selectedBodegaObj} 
                             closeBodegaShow={this.closeBodegaShow} 
+                           
                             onNewBodegaReviewChange={this.onNewBodegaReviewChange} 
                             onNewBodegaReviewSubmit={this.onNewBodegaReviewSubmit}
+                           
                             bodega_id = {this.state.bodega_id}
                             overallreview = {this.state.overallreview}
                             latenight = {this.state.latenight}
