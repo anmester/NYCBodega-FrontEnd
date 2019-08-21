@@ -3,6 +3,7 @@ import '../App.css';
 import 'semantic-ui-css/semantic.min.css'
 import BodegaInfoCard from './BodegaInfoCard.js';
 import  '../SearchReviews.css';
+import { Card } from 'semantic-ui-react';
 
 
 export default class BodegaShow extends React.Component{
@@ -50,15 +51,9 @@ export default class BodegaShow extends React.Component{
 
         // let bodegaInfo = this.props.bodega[0][0]
         return(
-            <div className='bodega-show'>
-                {/* <h3>Inside Bodega Show</h3> */}
+            <Card.Group className='bodega-show' itemsPerRow={4}>
                 {delisArray2}
-                {/* <h3>{bodegaInfo.name}</h3>
-                <p>Neighborhood: {bodegaInfo.neighborhood}</p>
-                <p>Average Rating: {bodegaInfo.averagerating}</p> */}
-                <button onClick={this.props.closeBodegaShow}>Close Bodega</button><br></br>
-                <button onClick={this.addReview}>Add Review</button>
-            </div>
+            </Card.Group>
         )
     }
 }

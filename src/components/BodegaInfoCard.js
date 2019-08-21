@@ -5,36 +5,24 @@ import 'semantic-ui-css/semantic.min.css'
 import ReviewInfoCard from './ReviewInfoCard.js';
 import  '../SearchReviews.css';
 import { relative } from 'path';
-
-
-
+import { Card, Form } from 'semantic-ui-react'
 
 export default class BodegaInfoCard extends React.Component{
 
     renderReviewInfoCards = () => {
-            // make a review info card for each reviewinfo
-
-
         let reviewsArray = this.props.filteredReviews.map(review  => {
-            // console.log('this.props.searchTerm', this.props.searchTerm )  // CORREECT, is ALL 
             console.log("review in BodegaInfoCard", review)
             return(
-                // <div className="bodegaInfoCard">
-
-                    /* <p className="cardText">Reviews for: {this.props.searchTerm }</p> */
-
+                <Card>
                     <ReviewInfoCard 
                         bodega={this.props.bodega} 
                         bodegaAvgRating={this.props.bodegaAvgRating} 
                         filteredReviews= {this.props.filteredReviews} 
                         searchTerm = {this.props.searchTerm} 
                     />
-                    //{/* <h3>Reviews for: {this.props.searchTerm.charAt(0).toUpperCase() }</h3>   DELETES  REST OF WORD*/}
-
-                // </div>
+                </Card>
             )   
         } )
-
 
         let searchTermDisplayNames = {
             "latenight" : "Open Late Night"
@@ -42,19 +30,17 @@ export default class BodegaInfoCard extends React.Component{
 
         if ( reviewsArray.length > 0){
             return(
-                <div className="bodegaInfoCard">
-                <p className="cardText"> Reviews: {searchTermDisplayNames[this.props.searchTerm]}</p>
-                {/* {reviewsArray} */}
-                <ReviewInfoCard 
-                            bodega={this.props.bodega} 
-                            bodegaAvgRating={this.props.bodegaAvgRating} 
-                            filteredReviews= {this.props.filteredReviews} 
-                            searchTerm = {this.props.searchTerm} 
-                            reviewsArray = {this.props.reviewsArray}
-                />
-                </div>
-
-            ) //reviewsArray
+                <Card className="reviewInfoCard">
+                    <p className="cardText"> Reviews: {searchTermDisplayNames[this.props.searchTerm]}</p>
+                    <ReviewInfoCard 
+                        bodega={this.props.bodega} 
+                        bodegaAvgRating={this.props.bodegaAvgRating} 
+                        filteredReviews= {this.props.filteredReviews} 
+                        searchTerm = {this.props.searchTerm} 
+                        reviewsArray = {this.props.reviewsArray}
+                    />
+                </Card>
+            ) 
             } else {
                 return(
                     " No reviews! "
@@ -64,18 +50,11 @@ export default class BodegaInfoCard extends React.Component{
 
 
 
-        render() {  // this whole render is getting called once for each review. 
-            // console.log("PROPS!" , this.props.filteredReviews)
-
+        render() { 
             let reviewsArray = this.renderReviewInfoCards()
-            console.log("reviewsArrray : ", reviewsArray)   // is the proper length
-
             return(
-                <div className='bodega-show'>
-                    {/* <h4> in Bodega Info Card </h4> */}
-
+                <div className='reviewInfoCard'>
                     {reviewsArray}
-                    {/* Have Levels:   BodegaInfoCard   ReviewInfoCard   ReviewCategoryCard */}
                 </div>
             )
         }
